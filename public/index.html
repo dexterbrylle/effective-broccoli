@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>brylle.xyz || URL Shortener</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>brylle.xyz</h1>
+  </header>
+
+  <main id="app">
+    <form class="form" v-if="formVisible" @submit.prevent="createUrl()">
+      <div v-if="error" class="error">
+        {{ error }}
+      </div>
+
+      <input class="input" type="text" name="url" v-model="url" id="url" placeholder="URL to shorten">
+      <input class="input" type="text" name="slug" v-model="slug" id="slug" placeholder="Enter custom URL slug (optional)">
+      <button type="submit" class="create">Shorten URL!</button>
+    </form>
+
+    <div v-if="created">
+      <p class="created">Here's the short url: <a :href="created">{{ created }}</a></p>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <script src="app.js"></script>
+</body>
+</html>
